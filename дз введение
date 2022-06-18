@@ -1,0 +1,33 @@
+const price = { 
+    chocolate: 1, 
+    wraps: 3 
+}; 
+ 
+let balance = { 
+    dollars: 30, 
+    wraps: 0 
+}; 
+ 
+let result = { 
+    chocolate: 0, 
+    dollars: 0, 
+    wraps: 0 
+} 
+ 
+function Calculate(){ 
+ 
+    result.chocolate = Math.floor(balance.dollars / price.chocolate); 
+    balance.wraps += result.chocolate; 
+ 
+    let i; 
+    for(i = balance.wraps; i >= price.wraps; i-=price.wraps){ 
+        result.chocolate++; 
+        i++; 
+    } 
+ 
+    result.wraps = i; 
+    result.dollars = balance.dollars % price.chocolate; 
+    return [result.chocolate, result.wraps, result.dollars]; 
+} 
+ 
+console.log(Calculate());
